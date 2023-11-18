@@ -37,8 +37,8 @@ export const GroupModal = ({ setOpen, open, title, description, member, setMembe
         setOpen(false);
     };
     const addGroup = (event) => {
-        
-        if (personName.length <= 1 || groupName.length == 0) {
+        console.log(groupName.length,personName)
+        if (personName.length > 2 && groupName.length == 0) {
             toast({
                 title: "Please Fill all the Feilds",
                 status: "warning",

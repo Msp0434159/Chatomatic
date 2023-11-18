@@ -38,7 +38,8 @@ const App = () => {
 
     axios.request(config)
       .then((response) => {
-        setGroups(response.data.groups);
+        const array = sortByIdDesc(response.data.groups)
+        setGroups(array);
       })
       .catch((error) => {
         console.log(error);
@@ -53,6 +54,12 @@ const App = () => {
     // Create a shallow copy of the array before sorting
     const sortedArray = [...arrayOfObjects];
     sortedArray.sort((a, b) => a.sort_id - b.sort_id);
+    return sortedArray;
+  }
+  function sortByIdDesc(arrayOfObjects) {
+    // Create a shallow copy of the array before sorting
+    const sortedArray = [...arrayOfObjects];
+    sortedArray.sort((a, b) => a.id - b.id);
     return sortedArray;
   }
   const onSocketMessage = (dataStr) => {
